@@ -1,8 +1,8 @@
 #User function Template for python3
 
-class Solution: 
+class Solution:
     def select(self, arr, i):
-        # code here 
+        # Find the index of the minimum element in arr starting from index i
         min_ind = i
         for j in range(i, len(arr)):
             if arr[j] < arr[min_ind]:
@@ -10,10 +10,13 @@ class Solution:
         return min_ind
     
     def selectionSort(self, arr,n):
-        #code here
+        # Perform selection sort on the arr
         for i in range(len(arr)):
+            # Find the index of the minimum element from i to the end
             min_ind = self.select(arr, i)
+            # If the minimum element is not already at its correct position
             if i != min_ind:
+                # Swap the elements at indices i and min_ind
                 arr[i], arr[min_ind] = arr[min_ind], arr[i]
 
 
