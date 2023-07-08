@@ -1,5 +1,6 @@
 class Solution(object):
     def missingNumber(self, nums):
-        for i in range(len(nums)+1):
+        n = len(nums)
+        for i in range(n + 1):  # Include the last number in the range
             if i not in nums:
                 return i
