@@ -22,10 +22,4 @@ class Solution(object):
             # This creates a transposed version of the entire matrix.
 
         for i in range(rows):
-            for j in range(rows):
-                matrix[i][j] = res[i][j]
-        # After the first loop completes, "res" will contain the transposed version of the original matrix.
-        # This double loop then goes through the "matrix" again and replaces each element in "matrix" with the corresponding element from the "res" list.
-        # This effectively rotates the matrix 90 degrees clockwise.
-
-        # The "rotate" method does not return anything explicitly, as it modifies the original "matrix" in place.
+            matrix[i] = res[i]  # Copy the i-th row from the transposed matrix (res) back to the original matrix (matrix).
