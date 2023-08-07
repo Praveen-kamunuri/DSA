@@ -9,11 +9,11 @@ class Solution(object):
         ans = []
         
         while top <= bottom and left <= right:
-    
+            
             for i in range(left,right+1):
-                ans.append(matrix[top][i])
+                ans.append(matrix[left][i])
             top += 1
-
+            
             for i in range(top,bottom+1):
                 ans.append(matrix[i][right])
             right -= 1
@@ -27,7 +27,7 @@ class Solution(object):
                 for i in range(bottom,top-1,-1):
                     ans.append(matrix[i][left])
                 left += 1
-        
         return ans
-            
-            
+                    
+                
+        
