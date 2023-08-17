@@ -4,9 +4,8 @@ class Solution(object):
         ans = []
         nums.sort()
         for i in range(n):
-            if i != 0 and nums[i] == nums[i-1]:
+            if i != 0  and nums[i] == nums[i-1]:
                 continue
-        
             j = i + 1
             k = n - 1
             while j < k:
@@ -25,5 +24,4 @@ class Solution(object):
                     while j < k and nums[k] == nums[k+1]:
                         k -= 1
         return ans
-                    
-                
+                        
