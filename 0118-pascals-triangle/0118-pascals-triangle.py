@@ -3,7 +3,7 @@ class Solution(object):
         triangle = [[1],[1,1]]
         if numRows == 1:
             return [[1]]
-        if numRows ==2:
+        if numRows == 2:
             return triangle
         for i in range(numRows-2):
             row = [1]
