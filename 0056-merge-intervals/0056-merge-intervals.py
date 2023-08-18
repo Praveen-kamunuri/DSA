@@ -1,6 +1,6 @@
 class Solution(object):
     def merge(self, intervals):
-        n =  len(intervals)
+        n = len(intervals)
         ans = []
         intervals.sort()
         for i in range(n):
@@ -9,5 +9,3 @@ class Solution(object):
             else:
                 ans[-1][1] = max(ans[-1][1] , intervals[i][1])
         return ans
-        
-        
