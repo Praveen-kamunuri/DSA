@@ -3,14 +3,15 @@ class Solution(object):
         n = len(nums)
         low = 0
         high = n - 1
-        ans = n
+        ans = n  # Initialize ans with a default value (last index + 1)
+        
         while low <= high:
-            mid = (low + high) //2
+            mid = (low + high) // 2
+            
             if nums[mid] >= target:
-                ans = mid
+                ans = mid  # Update ans with the current mid index
                 high = mid - 1
-            elif nums[mid] < target:
+            else:
                 low = mid + 1
+        
         return ans
-                
-                
