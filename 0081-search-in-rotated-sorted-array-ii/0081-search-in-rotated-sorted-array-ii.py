@@ -7,11 +7,12 @@ class Solution(object):
             mid = (low + high) // 2
             if nums[mid] == target:
                 return True
-            if nums[low] == nums[mid] and  nums[mid] == nums[high]:
+            
+            # Handle duplicates at both ends
+            if nums[low] == nums[mid] and nums[mid] == nums[high]:
                 low += 1
                 high -= 1
-                continue
-            if nums[low] <= nums[mid]:
+            elif nums[low] <= nums[mid]:
                 if nums[low] <= target <= nums[mid]:
                     high = mid - 1
                 else:
@@ -22,4 +23,3 @@ class Solution(object):
                 else:
                     high = mid - 1
         return False
-                    
