@@ -2,17 +2,14 @@ class Solution(object):
     def removeOuterParentheses(self, s):
         result = []
         balance = 0
-
-        for char in s:
-            if char == '(':
+        for i in s:
+            if i == '(':
                 if balance > 0:
-                    result.append(char)
+                    result.append(i)
                 balance += 1
             else:
                 balance -= 1
                 if balance > 0:
-                    result.append(char)
-    
+                    result.append(i)
         return ''.join(result)
-
         
