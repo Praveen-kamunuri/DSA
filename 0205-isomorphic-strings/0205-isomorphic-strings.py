@@ -2,24 +2,22 @@ class Solution(object):
     def isIsomorphic(self, s, t):
         if len(s) != len(t):
             return False
+        
+        s_hashmap = {}
+        t_hashmap = {}
+        
+        for i, j in zip(s, t):
+            if i in s_hashmap:
+                if s_hashmap[i] != j:
+                    return False
+        
+            else:
+                s_hashmap[i] = j
 
-        s_to_t = {}
-        t_to_s = {}
-
-        for i in range(len(s)):
-            char_s = s[i]
-            char_t = t[i]
-
-            if char_s in s_to_t:
-                if s_to_t[char_s] != char_t:
+            if j in t_hashmap:
+                if t_hashmap[j] != i:
                     return False
             else:
-                s_to_t[char_s] = char_t
-
-            if char_t in t_to_s:
-                if t_to_s[char_t] != char_s:
-                    return False
-            else:
-                t_to_s[char_t] = char_s
+                t_hashmap[j] = i
 
         return True
