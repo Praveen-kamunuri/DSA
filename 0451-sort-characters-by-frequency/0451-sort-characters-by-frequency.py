@@ -7,6 +7,6 @@ class Solution:
             else:
                 hashmap[i] = 1
         sorted_keys = sorted(hashmap.keys() , key = lambda k: hashmap[k] , reverse = True)
-        rep_keys = [key * hashmap[key] for key in sorted_keys]
-        res = ''.join(rep_keys)
+        repeated_keys = [key * hashmap[key] for key in sorted_keys]
+        res = ''.join(repeated_keys)
         return res
