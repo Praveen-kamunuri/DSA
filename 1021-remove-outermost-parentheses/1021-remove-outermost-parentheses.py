@@ -1,15 +1,15 @@
-class Solution(object):
-    def removeOuterParentheses(self, s):
-        result = []
-        balance = 0
+class Solution:
+    def removeOuterParentheses(self, s: str) -> str:
+        res = []
+        bal = 0
         for i in s:
-            if i == '(':
-                if balance > 0:
-                    result.append(i)
-                balance += 1
+            if i == "(":
+                if bal > 0:
+                    res.append(i)
+                bal += 1
             else:
-                balance -= 1
-                if balance > 0:
-                    result.append(i)
-        return ''.join(result)
+                bal -= 1
+                if bal > 0:
+                    res.append(i)
+        return "".join(res)
         
