@@ -1,8 +1,5 @@
 class Solution:
     def maxDepth(self, s: str) -> int:
-        if s == "":
-            return 0
-        
         
         
         
