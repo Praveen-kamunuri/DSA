@@ -1,19 +1,26 @@
-class Solution(object):
-    def beautySum(self, s):
-        n = len(s)
-        result = 0
-
-        for i in range(n):
-            char_count = [0] * 26  # Initialize an array to store character frequencies (a to z)
-
-            for j in range(i, n):
-                char_count[ord(s[j]) - ord('a')] += 1  # Update character frequency
+class Solution:
+    def beautySum(self, s: str) -> int:
+        def freq(string):
+            hashmap = {}
+            for i in string:
+                if i in hashmap:
+                    hashmap[i] += 1
+                else:
+                    hashmap[i] = 1
+            maxi = max(hashmap.values())
+            mini = min(hashmap.values())
+            return maxi - mini
+            
+        
+        
+        
+        
+        
+        total_sum = 0
+        for i in range(len(s)):
+            for j in range(i+1,len(s)):
+                sub_str = s[i:j+1]
+                curr_freq = freq(sub_str)
+                total_sum += curr_freq
+        return total_sum
                 
-                # Calculate max and min frequency within the current substring
-                max_freq = max(char_count)
-                min_freq = min(freq for freq in char_count if freq > 0)
-
-                # Calculate beauty for the current substring
-                result += (max_freq - min_freq)
-
-        return result
