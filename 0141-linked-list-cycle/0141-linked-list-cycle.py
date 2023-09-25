@@ -6,14 +6,22 @@
 
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        li = []
+        # Create an empty list to store visited nodes
+        visited_nodes = []
+
+        # Start at the head of the linked list
         current = head
+
+        # Traverse the linked list
         while current:
-            if current not in li:
-                li.append(current)
+            # Check if the current node is already in the visited nodes list
+            if current not in visited_nodes:
+                # If not, add it to the list and move to the next node
+                visited_nodes.append(current)
                 current = current.next
             else:
+                # If the current node is in the visited nodes list, a cycle is detected
                 return True
+
+        # If the loop completes without finding a cycle, return False
         return False
-            
-        
