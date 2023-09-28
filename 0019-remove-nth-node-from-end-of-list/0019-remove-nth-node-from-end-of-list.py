@@ -10,13 +10,12 @@ class Solution:
         slow = start
         fast = start
         
-        
         for i in range(1,n+1):
             fast = fast.next
-        
-        while fast.next != None:
+        while fast.next:
             slow = slow.next
             fast = fast.next
         slow.next = slow.next.next
         return start.next
+        
         
