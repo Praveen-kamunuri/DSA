@@ -8,25 +8,22 @@ class Solution:
         if not head:
             return None
         
-        
-        
-        
         current = head
         length = 1
         while current.next is not None:
             length += 1
             current = current.next
         current.next = head
-        k = k % length
+        
+        k = k % length 
         dest = ( length - k )
         cnt = 1
         current = head
         while cnt != dest:
             cnt += 1
             current = current.next
-        head = current.next
-        print(head.val)
+        head  = current.next
         current.next = None
         return head
-            
+        
         
