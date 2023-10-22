@@ -1,7 +1,7 @@
 class Solution:
     def checkString(self, s: str) -> bool:
         n = len(s)
-        if s and 'b' in s:
+        if  'b' in s:
             start_ind = 0
             for  i in range(n):
                 if s[i] != 'b':
