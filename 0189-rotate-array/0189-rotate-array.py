@@ -5,23 +5,17 @@ class Solution:
         k = k % n
         
         if k == 0:
-            return nums
-        
+            return
+
         start_ind = n - k
         li = []
-        print("star",start_ind)
-        for i in range(start_ind , n):
+        
+        for i in range(start_ind, n):
             li.append(nums[i])
-        print("li",li)
-            
+
         for i in range(start_ind):
             li.append(nums[i])
-        print("ret",li)
-        
+
+        # Update the original 'nums' list with the rotated elements
         for i in range(n):
             nums[i] = li[i]
-            
-        return li
-            
-        
-        
