@@ -1,6 +1,10 @@
-class Solution(object):
-    def missingNumber(self, nums):
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
         n = len(nums)
-        for i in range(n + 1):  # Include the last number in the range
-            if i not in nums:
+        nums.sort()
+        for i in range(n):
+            if nums[i] == i:
+                continue
+            else:
                 return i
+        return i+1
