@@ -13,6 +13,6 @@ class Solution:
             if nums[i] > nums[ind]:
                 nums[i] , nums[ind] = nums[ind] , nums[i]
                 break
-        
-        nums[ind+1:] = nums[:ind:-1]
+        nums[ind+1:] = reversed(nums[ind+1:])
         return nums
+        
