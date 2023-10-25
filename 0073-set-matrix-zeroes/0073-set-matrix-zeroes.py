@@ -1,17 +1,22 @@
-class Solution:
-    def setZeroes(self, matrix: List[List[int]]) -> None:
+class Solution(object):
+    def setZeroes(self, matrix):
         rows = len(matrix)
         cols = len(matrix[0])
-        zero_rows = []
-        zero_cols = []
+        
+        zeroRows = set()
+        zeroCols = set()
+        
+        # Identify the rows and columns containing zeros
         for i in range(rows):
             for j in range(cols):
                 if matrix[i][j] == 0:
-                    zero_rows.append(i)
-                    zero_cols.append(j)
+                    zeroRows.add(i)
+                    zeroCols.add(j)
+        
+        # Set the corresponding rows and columns to zeros
         for i in range(rows):
             for j in range(cols):
-                if i in zero_rows or j in zero_cols:
+                if i in zeroRows or j in zeroCols:
                     matrix[i][j] = 0
         
-        
+        return matrix
