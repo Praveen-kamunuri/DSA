@@ -1,5 +1,5 @@
-class Solution(object):
-    def generate(self, numRows):
+class Solution:
+    def generate(self, numRows: int) -> List[List[int]]:
         # Initialize the triangle with the first two rows
         triangle = [[1], [1, 1]]
         
@@ -24,3 +24,4 @@ class Solution(object):
             triangle.append(row)  # Add the row to the triangle
         
         return triangle
+        
