@@ -5,7 +5,6 @@ class Solution:
             return [[1]]
         if numRows == 2:
             return [[1],[1,1]]
-        
         for i in range(numRows - 2):
             row = [1]
             for j in range(len(triangle[-1])-1):
@@ -13,6 +12,4 @@ class Solution:
             row.append(1)
             triangle.append(row)
         return triangle
-            
-            
         
