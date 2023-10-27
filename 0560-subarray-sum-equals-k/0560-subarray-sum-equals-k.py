@@ -1,18 +1,14 @@
-class Solution(object):
-    def subarraySum(self, nums, k):
-        hashmap = {}
+class Solution:
+    def subarraySum(self, nums: List[int], k: int) -> int:
+        hashmap = defaultdict(int)
         n = len(nums)
-        cur_sum = 0
-        count = 0  # Initialize the count of subarrays whose sum equals k
-
+        cnt = 0
+        pre_sum = 0
+        hashmap[0] = 1
         for i in range(n):
-            cur_sum += nums[i]
-            if cur_sum == k:
-                count += 1
+            pre_sum += nums[i]
+            remove = pre_sum - k
+            cnt += hashmap[remove]
+            hashmap[pre_sum] += 1
+        return cnt
             
-            if cur_sum - k in hashmap:
-                count += hashmap[cur_sum - k]
-            
-            hashmap[cur_sum] = hashmap.get(cur_sum, 0) + 1
-
-        return count
