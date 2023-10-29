@@ -1,40 +1,39 @@
-class Solution(object):
-    def fourSum(self, nums, target):
-        n = len(nums) # size of the array
-        ans = []
-
-        # sort the given array:
+class Solution:
+    def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
+        n = len(nums)
         nums.sort()
+        res = []  # Initialize the result list
 
-        # calculating the quadruplets:
         for i in range(n):
-            # avoid the duplicates while moving i:
+            # Skip duplicate values at the same position
             if i > 0 and nums[i] == nums[i - 1]:
                 continue
+
             for j in range(i + 1, n):
-                # avoid the duplicates while moving j:
-                if j > i + 1 and nums[j] == nums[j - 1]:
+                # Skip duplicate values at the same position
+                if j != i + 1 and nums[j] == nums[j - 1]:
                     continue
 
-                # 2 pointers:
                 k = j + 1
                 l = n - 1
+
                 while k < l:
-                    _sum = nums[i] + nums[j] + nums[k] + nums[l]
-                    if _sum == target:
+                    summ = nums[i] + nums[j] + nums[k] + nums[l]
+
+                    if summ == target:
                         temp = [nums[i], nums[j], nums[k], nums[l]]
-                        ans.append(temp)
+                        res.append(temp)
                         k += 1
                         l -= 1
 
-                        # skip the duplicates:
+                        # Skip duplicate values at new positions
                         while k < l and nums[k] == nums[k - 1]:
                             k += 1
                         while k < l and nums[l] == nums[l + 1]:
                             l -= 1
-                    elif _sum < target:
+                    elif summ < target:
                         k += 1
                     else:
                         l -= 1
 
-        return ans
+        return res  # Return the list of lists containing four numbers that sum to the target.
