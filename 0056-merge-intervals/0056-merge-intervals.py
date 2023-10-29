@@ -1,17 +1,17 @@
-class Solution(object):
-    def merge(self, intervals):
+class Solution:
+    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
         n = len(intervals)
-        ans = []
-        
-        # Sort the intervals based on their start values
         intervals.sort()
-        
+        ans = []
         for i in range(n):
-            # If the ans list is empty or there's a gap between intervals, add the current interval
-            if not ans or intervals[i][0] > ans[-1][1]:
-                ans.append(intervals[i])
-            else:
-                # Merge overlapping intervals by updating the end value of the last interval
-                ans[-1][1] = max(ans[-1][1], intervals[i][1])
-                
+            start = intervals[i][0]
+            end = intervals[i][1]
+            if ans and end <= ans[-1][1]:
+                continue
+            for j in range(i+1 , n):
+                if intervals[j][0] <= end:
+                    end = max(end , intervals[j][1])
+                else:
+                    break
+            ans.append([start,end])
         return ans
