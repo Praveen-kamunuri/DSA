@@ -1,17 +1,17 @@
-class Solution(object):
-    def searchInsert(self, nums, target):
+class Solution:
+    def searchInsert(self, nums: List[int], target: int) -> int:
         n = len(nums)
         low = 0
         high = n - 1
-        ans = n  # Initialize ans with a default value (last index + 1)
-        
+        low_bound = n
         while low <= high:
             mid = (low + high) // 2
-            
-            if nums[mid] >= target:
-                ans = mid  # Update ans with the current mid index
-                high = mid - 1
-            else:
+            if nums[mid] == target:
+                return mid
+            elif nums[mid] < target:
                 low = mid + 1
+            else:
+                low_bound = mid
+                high -= 1
+        return low_bound
         
-        return ans
