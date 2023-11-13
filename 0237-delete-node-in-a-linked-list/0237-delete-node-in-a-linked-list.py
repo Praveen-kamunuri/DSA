@@ -6,8 +6,10 @@
 
 class Solution:
     def deleteNode(self, node):
-        # Copy the value of the next node to the current node
-        node.val = node.next.val
-        
-        # Update the next pointer of the current node to skip the next node
-        node.next = node.next.next
+        if node is None or node.next is None:
+            # You cannot delete the last node or a node that doesn't exist.
+            return
+
+        next_node = node.next
+        node.val = next_node.val
+        node.next = next_node.next
