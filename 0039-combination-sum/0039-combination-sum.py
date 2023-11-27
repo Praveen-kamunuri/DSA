@@ -8,16 +8,18 @@ class Solution:
                 if target == 0:
                     ans.append(ds[:])
                 return
-            
             if candidates[ind] <= target:
                 ds.append(candidates[ind])
-                findCombination(ind, target - candidates[ind])
+                findCombination(ind , target - candidates[ind])
                 ds.pop()
             findCombination(ind + 1 , target)
-            return ans
-        
-        
-        
-        
+            
+            
+            
+            
+            
+            
         findCombination(0,target)
         return ans
+        
+        
