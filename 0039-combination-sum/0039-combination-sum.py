@@ -7,7 +7,9 @@ class Solution:
             if ind == len(candidates):
                 if target == 0:
                     ans.append(ds[:])
-                return 
+                return
+            
+            
             
             if candidates[ind] <= target:
                 ds.append(candidates[ind])
@@ -15,20 +17,6 @@ class Solution:
                 ds.pop()
                 
             findCombinations(ind + 1 , target)
-                
+        
         findCombinations(0 , target)
         return ans
-                
-                
-        
-        
-        
-        
-        
-        
-        
-        
-        findCombinations(0 , target)
-        
-        
-        
