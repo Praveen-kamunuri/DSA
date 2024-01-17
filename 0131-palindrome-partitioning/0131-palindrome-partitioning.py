@@ -1,26 +1,30 @@
+from typing import List
+
 class Solution:
     def partition(self, s: str) -> List[List[str]]:
         res = []
-        ds = []
-        def generate(ind):
-            if ind == len(s):
-                res.append(ds[:])
+        path = []
+
+
+        def partitionHelper(index: int):
+            if index == len(s):
+                res.append(path[:])
                 return
-            
-            for i in range(ind , len(s)):
-                if isPal(s,ind,i):
-                    ds.append(s[ind:i+1])
-                    generate(i+1)
-                    ds.pop()
-                    
-        def isPal(s,start, end):
+            for i in range(index, len(s)):
+                if isPalindrome(s, index, i):
+                    path.append(s[index:i + 1])
+                    partitionHelper(i + 1)
+                    path.pop()
+
+
+        def isPalindrome(s: str, start: int, end: int) -> bool:
             while start <= end:
                 if s[start] != s[end]:
                     return False
                 start += 1
                 end -= 1
             return True
-        
-        
-        generate(0)
+
+
+        partitionHelper(0)
         return res
