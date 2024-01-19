@@ -1,12 +1,10 @@
 class Solution:
     def solveNQueens(self, n: int) -> List[List[str]]:
         
-        
         def solve(col,board,ans,n):
             if col == n:
                 ans.append([''.join(row) for row in board])
-                return 
-            
+                return
             
             def isSafe(row,col,board,n):
                 duprow = row
@@ -15,40 +13,40 @@ class Solution:
                 while row >= 0 and col >= 0:
                     if board[row][col] == 'Q':
                         return False
-                    
                     row -= 1
                     col -= 1
-                
-                row = duprow 
+                    
+                row = duprow
                 col = dupcol
                 
                 while col >= 0:
                     if board[row][col] == 'Q':
                         return False
-                    
                     col -= 1
-                
+                    
                 row = duprow
                 col = dupcol
                 
                 while row < n and col >= 0:
                     if board[row][col] == 'Q':
                         return False
-                    row += 1
+                    row  += 1
                     col -= 1
                     
                 return True
-                        
-         
-            for row in range(n):
+                    
+            
+            
+            for row in  range(n):
                 if isSafe(row,col,board,n):
                     board[row][col] = 'Q'
-                    solve(col + 1, board, ans,n)
+                    solve(col+1,board,ans,n)
                     board[row][col] = '.'
                     
+        
+        
         
         ans = []
         board = [['.' for i in range(n)] for i in range(n)]
         solve(0,board,ans,n)
         return ans
-        
