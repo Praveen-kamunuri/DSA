@@ -1,55 +1,28 @@
+from typing import List
+
 class Solution:
+    def solve(self, col, board, ans, leftrow, upperDiagonal, lowerDiagonal, n):
+        if col == n:
+            ans.append(["".join(row) for row in board])
+            return
+
+        for row in range(n):
+            if leftrow[row] == 0 and lowerDiagonal[row + col] == 0 and upperDiagonal[n - 1 + col - row] == 0:
+                board[row][col] = 'Q'
+                leftrow[row] = 1
+                lowerDiagonal[row + col] = 1
+                upperDiagonal[n - 1 + col - row] = 1
+                self.solve(col + 1, board, ans, leftrow, upperDiagonal, lowerDiagonal, n)
+                board[row][col] = '.'
+                leftrow[row] = 0
+                lowerDiagonal[row + col] = 0
+                upperDiagonal[n - 1 + col - row] = 0
+
     def solveNQueens(self, n: int) -> List[List[str]]:
-        def solve(col,board,ans,n):
-            if col == n:
-                ans.append([''.join(row)for row in board])
-                return
-                
-            
-            def isSafe(row,col,board,n):
-                duprow = row
-                dupcol = col
-                
-                while row >= 0 and col >= 0:
-                    if board[row][col] == 'Q':
-                        return False
-                    
-                    row -= 1
-                    col -= 1
-                    
-                row = duprow
-                col = dupcol
-                
-                while col >= 0:
-                    if board[row][col] == 'Q':
-                        return False
-                    
-                    col -= 1
-                    
-                row = duprow
-                col = dupcol
-                
-                while row < n and col >= 0:
-                    if board[row][col] == 'Q':
-                        return False
-                    
-                    row += 1
-                    col -= 1
-                    
-                return True
-                    
-                    
-                    
-            for row in range(n):
-                if isSafe(row,col,board,n):
-                    board[row][col] = 'Q'
-                    solve(col + 1,board,ans,n)
-                    board[row][col] = '.'
-                    
-                    
-        
-    
         ans = []
-        board = [['.' for i in range(n)]for i in range(n)]
-        solve(0,board,ans,n)
+        board = [['.' for _ in range(n)] for _ in range(n)]
+        leftrow = [0] * n
+        upperDiagonal = [0] * (2 * n - 1)
+        lowerDiagonal = [0] * (2 * n - 1)
+        self.solve(0, board, ans, leftrow, upperDiagonal, lowerDiagonal, n)
         return ans
