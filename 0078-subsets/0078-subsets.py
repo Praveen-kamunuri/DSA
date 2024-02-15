@@ -1,15 +1,23 @@
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        n = len(nums)
-        res = []
         
-        for i in range(2 ** n):
-            ds = []
-            for j in range(n):
-                if i & (1 << j):
-                    ds.append(nums[j])
-            res.append(ds)
-        return res
+        
+        def generate(n, ds, ans, ind):
+            if ind == n:
+                ans.append(ds[:])
+                return
             
-                    
+          
+            ds.append(nums[ind])
+            generate(n, ds, ans, ind + 1)
+            ds.pop()
+            generate(n, ds, ans, ind + 1)
         
+        
+        n = len(nums)
+        ds = []
+        ans = []
+        
+        
+        generate(n, ds, ans, 0)
+        return ans
