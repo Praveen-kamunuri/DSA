@@ -1,43 +1,32 @@
-import  math
+import math
 class Solution:
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
         
-        
-        def find_max(piles):
-            n = len(piles)
+        def max_h(piles):
             maxi = piles[0]
-            for i in range(n):
+            for i in range(len(piles)):
                 if piles[i] > maxi:
                     maxi = piles[i]
             return maxi
         
         
-        
-        def calTotalH(piles, Hourly):
+        def calTotal_h(piles, hours):
+            total = 0
+            
             n = len(piles)
-            total_h = 0
             for i in range(n):
-                total_h += math.ceil(piles[i] / Hourly)
-            return total_h
-                
-                
-        
+                total += math.ceil(piles[i] / hours)
+            return total
         
         low = 1
-        
-        high = find_max(piles)
+        high = max_h(piles)
         
         while low <= high:
             mid = (low + high) // 2
+            total_h = calTotal_h(piles, mid)
             
-            totalH = calTotalH(piles, mid)
-            
-            if totalH <= h:
+            if total_h <= h:
                 high = mid - 1
-            
             else:
-                low  = mid + 1
+                low = mid + 1
         return low
-        
-        
-        
