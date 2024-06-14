@@ -1,17 +1,17 @@
 class Solution:
     def missingNumber(self, nums: List[int]) -> int:
-        # Get the length of the input list `nums`
+        # Get the length of the input list
         n = len(nums)
         
-        # Calculate the expected sum of numbers from 0 to n using the formula for the sum of an arithmetic series
-        summ = n * (n+1) // 2
+        # Calculate the expected sum of the first n natural numbers using the formula n*(n+1)//2
+        actual_sum = n * (n + 1) // 2
         
-        # Initialize a variable `s` to keep track of the sum of elements in the list
-        s = 0
+        # Initialize a variable to store the sum of the numbers in the input list
+        summ = 0
         
-        # Iterate through the elements in the list
-        for i in nums:
-            s += i  # Add each element to the sum
+        # Iterate through the input list and calculate the sum of its elements
+        for i in range(n):
+            summ += nums[i]
         
-        # Calculate and return the missing number by subtracting the actual sum from the expected sum
-        return summ - s
+        # The missing number is the difference between the expected sum and the actual sum
+        return (actual_sum - summ)
