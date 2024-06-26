@@ -3,27 +3,22 @@ class Solution:
         
         n = len(s)
         
+        res = ''
+        
         bal = 0
         
-        res = []
-        
-        mystr = ''
-        
         for i in range(n):
-            
             if s[i] == '(':
                 bal += 1
                 
                 if bal > 1:
-                    res.append(s[i])
+                    res += s[i]
+                    
             else:
                 bal -= 1
                 
                 if bal > 0:
-                    res.append(')')
+                    res += s[i]
                     
-        for i in res:
-            mystr += i
-        return mystr
-        
+        return res
         
