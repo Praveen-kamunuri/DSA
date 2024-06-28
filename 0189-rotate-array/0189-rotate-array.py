@@ -7,6 +7,6 @@ class Solution:
         
         nums[:] = nums[::-1]
         
-        nums[:k] = reversed(nums[:k])
-        nums[k:] = reversed(nums[k:])
+        nums[:k] = nums[:k][::-1]
+        nums[k:] = nums[k:][::-1]
         return nums
