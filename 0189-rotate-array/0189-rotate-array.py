@@ -5,14 +5,8 @@ class Solution:
         
         k = k % n
         
-        rotated = [0] * n# [0,0,0,0,0,0,0]
+        nums[:] = nums[::-1]
         
-        for i in range(n):
-            rotated[(i+k) % n] = nums[i]
-        
-        for i in range(n):
-            nums[i] = rotated[i]
-            
-        
-        
-        
+        nums[:k] = reversed(nums[:k])
+        nums[k:] = reversed(nums[k:])
+        return nums
