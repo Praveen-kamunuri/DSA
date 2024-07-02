@@ -19,3 +19,8 @@ class Solution:
                 hashmap[num] -= 1  # Decrease the count of the element in hashmap
         
         return res
+    
+
+    
+# Time Complexity (TC): O(n + m)
+# Space Complexity (SC): O(n)
