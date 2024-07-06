@@ -6,15 +6,20 @@
 
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        # Initialize two pointers, tortoise and rabbit
-        tortoise = head
+        
         rabbit = head
+        
+        tortoise = head
+        
         while rabbit and rabbit.next:
-            # Move tortoise one step and rabbit two steps at a time
+            
             tortoise = tortoise.next
-            rabbit = rabbit.next.next
-            # Check if tortoise and rabbit meet at the same node (cycle detected)
-            if tortoise == rabbit:
+            
+            rabbit  = rabbit.next.next
+            
+        
+            if tortoise  == rabbit:
                 return True
-        # If the loop completes without finding a cycle, return False
+            
         return False
+        
