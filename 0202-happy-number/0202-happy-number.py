@@ -11,12 +11,17 @@ class Solution:
                 res += rem ** 2
             return res
         
+        
         while n != 1:
+            
             n = func(n)
+            
+            
             
             if n in sett:
                 return False
             
             sett.add(n)
-        
+            
         return True
+        
