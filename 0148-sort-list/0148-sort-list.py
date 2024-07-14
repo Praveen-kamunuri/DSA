@@ -1,30 +1,64 @@
+from typing import Optional
+
 # Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
 
 class Solution:
+    def mergeSortedList(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        dummy = ListNode(-1)
+        temp = dummy
+        
+        while list1 is not None and list2 is not None:
+            if list1.val <= list2.val:
+                temp.next = list1
+                list1 = list1.next
+            else:
+                temp.next = list2
+                list2 = list2.next
+            temp = temp.next
+        
+        if list1 is not None:
+            temp.next = list1
+        else:
+            temp.next = list2
+        
+        return dummy.next
+
+    def findMiddle(self, head: ListNode) -> ListNode:
+        if not head or not head.next:
+            return head
+        
+        slow = head
+        fast = head
+        
+        while fast.next and fast.next.next:
+            slow = slow.next
+            fast = fast.next.next
+        
+        return slow
+
     def sortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        # Step 1: Convert the linked list to a Python list
-        li = []  # Initialize an empty list to store values from the linked list
-        current = head  # Start from the head of the linked list
-        while current:
-            li.append(current.val)  # Append the value of the current node to the list
-            current = current.next  # Move to the next node
+        if not head or not head.next:
+            return head
+        
+        middle = self.findMiddle(head)
+        left = head
+        right = middle.next
+        middle.next = None
+        
+        left = self.sortList(left)
+        right = self.sortList(right)
+        
+        return self.mergeSortedList(left, right)
 
-        # Step 2: Sort the Python list
-        li.sort()  # Sort the list in ascending order
+# Time Complexity (TC): O(n log n)
+# The algorithm follows a divide-and-conquer approach, where the list is divided into two halves 
+# (log n divisions) and each division involves a linear traversal to merge the sorted halves (n work per division). 
+# Thus, the overall time complexity is O(n log n).
 
-        # Step 3: Update the linked list with the sorted values
-        current = head  # Reset the current pointer to the head of the linked list
-        for i in range(len(li)):
-            current.val = li[i]  # Update the value of the current node with the sorted value
-            current = current.next  # Move to the next node
-
-        # Step 4: Return the sorted linked list
-        return head  # Return the head of the sorted linked list
-
-# This implementation uses extra space to store the values in a Python list, which results in O(n) space complexity.
-# Even if you delete the list afterward, the space complexity remains O(n).
-# To achieve O(1) space complexity, you would need to use an in-place sorting algorithm designed for linked lists.
+# Space Complexity (SC): O(log n)
+# The space complexity is O(log n) due to the recursion stack used in the sortList function. 
+# Although the merge process itself is done in constant space, the recursion depth will be log n, making the overall space complexity O(log n).
