@@ -28,8 +28,6 @@ class Solution:
                 # Backtrack: remove the last element to explore other possibilities
                 ds.pop()
             
-        # Sort the input array before starting the recursion
-        nums.sort()
         
         # Start the recursion from index 0
         findSubset(0)
