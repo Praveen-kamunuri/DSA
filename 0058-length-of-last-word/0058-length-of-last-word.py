@@ -1,19 +1,25 @@
 class Solution:
     def lengthOfLastWord(self, s: str) -> int:
-        cnt = 0
         
-        word = 0
+        n = len(s)
         
-        for i in s:
-            if i == ' ':
-                if cnt != 0:
-                    word = cnt
-                cnt = 0
-            elif 'A' <= i <=  'Z' or 'a' <= i <= 'z':
-                cnt += 1
+        word_len = 0
+        
+        i = n - 1
+        
+        while i >= 0:
             
-        if cnt != 0:
-            word = cnt
-        return word
-    
+            
+            if s[i] == ' ':
+                if word_len == 0:
+                    i -= 1
+                else:
+                    return word_len
+            else:
+                word_len += 1
+                i -= 1
+        return word_len
                 
+        
+        
+        
