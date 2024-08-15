@@ -5,7 +5,7 @@ class Solution:
         
         stack = []
         
-        next_greater = [-1] * n
+        next_greater = [0] * n
         
         i = 2 * n - 1
         
