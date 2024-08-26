@@ -25,8 +25,8 @@ class Solution:
         
         while stack:
             res += stack.pop()
-        if len(res) == 1 and res == '0':
-            return '0'
+        '''if len(res) == 1 and res == '0':
+            return '0'''
         while len(res) > 1 and res[-1] == '0':
             res = res[:-1]
         
