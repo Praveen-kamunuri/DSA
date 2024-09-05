@@ -1,8 +1,8 @@
 from collections import deque
 
-
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+        
         n = len(nums)
         
         q = deque()
@@ -15,14 +15,14 @@ class Solution:
             
             while q and nums[q[-1]] <= nums[i]:
                 q.pop()
-            
+                
             q.append(i)
             
-            if i >= k - 1:
+            if i >= k-1:
                 res.append(nums[q[0]])
-
+        
         return res
-
-
+                
+        
         
         
