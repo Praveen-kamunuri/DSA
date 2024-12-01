@@ -1,6 +1,4 @@
 from collections import defaultdict, deque
-import heapq
-
 class Twitter:
 
     def __init__(self):
@@ -11,41 +9,46 @@ class Twitter:
         self.timestamp = 0
         
         self.tweet_time = {}
+        
 
     def postTweet(self, userId: int, tweetId: int) -> None:
         self.timestamp += 1
         
         self.tweet_time[tweetId] = (self.timestamp, userId)
         
+
         
         if len(self.tweets[userId]) == 10:
             self.tweets[userId].popleft()
-        
         self.tweets[userId].append(tweetId)
+        
+        
+        
         
         
 
     def getNewsFeed(self, userId: int) -> List[int]:
         
-        candidates = []
+        candidates_tweets = []
         
         users_to_check = self.followees[userId] | {userId}
         
         for user in users_to_check:
-            candidates.extend(self.tweets[user])
-            
-        return heapq.nlargest(10, candidates, key = lambda tid: self.tweet_time[tid][0])
+            candidates_tweets.extend(self.tweets[user])
+        
+        return heapq.nlargest(10, candidates_tweets, key = lambda tid: self.tweet_time[tid][0])
+    
         
 
     def follow(self, followerId: int, followeeId: int) -> None:
-        
         if followerId != followeeId:
             self.followees[followerId].add(followeeId)
-            
+        
         
 
     def unfollow(self, followerId: int, followeeId: int) -> None:
         self.followees[followerId].discard(followeeId)
+        
         
 
 
