@@ -28,7 +28,7 @@ class Solution:
             ans.append(node.val)
 
             # Preorder is Root -> Left -> Right
-            # We push the right child first so that the left child is processed next.
+            # We push the right child first so that the left child is processed next
             if node.right:
                 stack.append(node.right)
 
