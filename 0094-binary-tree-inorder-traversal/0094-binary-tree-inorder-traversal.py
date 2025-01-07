@@ -7,17 +7,24 @@
 class Solution:
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
 
-        inOrder = []
+        result = []
 
-        def traversal(node):
+        stack = []
 
-            if node:
+        current = root
 
-                traversal(node.left)
-                inOrder.append(node.val)
-                traversal(node.right)
+        while current or stack:
 
-        traversal(root)
+            while current:
 
-        return inOrder 
+                stack.append(current)
+                current = current.left
+            
+            current = stack.pop()
+
+            result.append(current.val)
+
+            current = current.right
+
+        return result
         
