@@ -36,7 +36,7 @@ class Solution:
             if node.left:
                 stack.append(node.left)
 
-        # Return the preorder traversal result
+        # Return the preorder traversal result.
         return ans
 
 
