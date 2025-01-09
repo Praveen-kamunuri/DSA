@@ -7,43 +7,36 @@
 
 class Solution:
     def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        """
-        Performs post-order traversal of a binary tree.
+        # Edge case: If the tree is empty, return an empty list
+        if not root:
+            return []
 
-        Args:
-        root (Optional[TreeNode]): The root node of the binary tree.
+        # Initialize two stacks: 
+        # stack1 is used to traverse the tree
+        # stack2 is used to store the postorder result in reverse
+        stack1 = []
+        stack2 = []
 
-        Returns:
-        List[int]: List of node values in post-order traversal order.
-        """
+        # Start traversal by pushing the root node to stack1
+        stack1.append(root)
 
-        # Initialize an empty list to store post-order traversal result
-        postOrder = []
+        # Traverse the tree until stack1 is empty
+        while stack1:
+            # Pop the top node from stack1
+            node = stack1.pop()
 
-        # Helper function to perform post-order traversal
-        def traversal(node):
-            """
-            Recursive function for post-order traversal.
+            # Push the node's value into stack2
+            stack2.append(node.val)
 
-            Args:
-            node (TreeNode): Current node being processed.
-            """
-            if node:  # Only process if the node is not None
-                traversal(node.left)      # Recur on the left subtree
-                traversal(node.right)     # Recur on the right subtree
-                postOrder.append(node.val)  # Visit the current node after its subtrees
+            # Push the left child first (if exists) so that the right child
+            # is processed first when reversing stack2
+            if node.left:
+                stack1.append(node.left)
 
-        # Start the traversal from the root node
-        traversal(root)
+            # Push the right child (if exists)
+            if node.right:
+                stack1.append(node.right)
 
-        # Return the final post-order traversal result
-        return postOrder
+        # Return the reversed stack2 to get the postorder traversal
+        return stack2[::-1]
 
-# Time Complexity (TC):
-# Each node is visited exactly once, and there are n nodes in the binary tree.
-# Therefore, the time complexity is O(n).
-
-# Space Complexity (SC):
-# The space complexity is determined by the recursion stack.
-# In the worst case (skewed tree), the recursion stack can go up to n levels, so SC = O(n).
-# In the best case (balanced tree), the height is log(n), so SC = O(log n).
