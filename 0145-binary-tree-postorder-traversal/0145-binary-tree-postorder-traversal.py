@@ -11,32 +11,31 @@ class Solution:
         if not root:
             return []
 
-        # Initialize two stacks: 
-        # stack1 is used to traverse the tree
-        # stack2 is used to store the postorder result in reverse
+        # Initialize two stacks: stack1 for traversal and stack2 for storing the postorder result in reverse
         stack1 = []
         stack2 = []
 
-        # Start traversal by pushing the root node to stack1
+        # Push the root node into stack1 to start the traversal
         stack1.append(root)
 
-        # Traverse the tree until stack1 is empty
+        # Traverse the tree
         while stack1:
             # Pop the top node from stack1
             node = stack1.pop()
-
-            # Push the node's value into stack2
+            
+            # Push the current node's value into stack2
             stack2.append(node.val)
 
-            # Push the left child first (if exists) so that the right child
-            # is processed first when reversing stack2
+            # Push the left child first to process it after the right child
             if node.left:
                 stack1.append(node.left)
 
-            # Push the right child (if exists)
+            # Push the right child
             if node.right:
                 stack1.append(node.right)
 
-        # Return the reversed stack2 to get the postorder traversal
+        # Return the reversed stack2 to get the correct postorder traversal
         return stack2[::-1]
 
+        # Time Complexity: O(n), where n is the number of nodes in the tree
+        # Space Complexity: O(n), due to the usage of two stacks that can each hold up to n nodes in the worst case
