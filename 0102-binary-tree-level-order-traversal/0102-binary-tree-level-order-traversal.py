@@ -37,7 +37,7 @@ class Solution:
                 if node.right:
                     q.append(node.right)
             
-            # Add the current level's values to the result
+            # Add the current level's values to the result.
             ans.append(level)
         
         # Return the list of all levels
