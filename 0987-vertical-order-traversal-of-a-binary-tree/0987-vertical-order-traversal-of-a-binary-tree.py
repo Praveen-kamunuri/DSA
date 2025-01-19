@@ -31,7 +31,7 @@ class Solution:
         # Prepare the result list to store the vertical order traversal
         result = []
 
-        # Iterate through the nodes dictionary in sorted order of x (vertical columns)
+        # Iterate through the nodes dictionary in sorted order of x (vertical columns.)
         for x in sorted(nodes.keys()):
             cols = []  # Temporary list to store nodes at this vertical column
             
@@ -54,6 +54,6 @@ class Solution:
 
 # Space Complexity (SC):
 # - We use a defaultdict to store nodes, which requires space for all the nodes in the tree. 
-# - Additionally, we use recursion for DFS, which requires O(H) space where H is the height of the tree due to the recursive stack.
+# - Additionally, we use recursion for DFS, which requires O(H) space where H is the height of the tree due to the recursive stack
 
 # Overall Space Complexity: O(N), where N is the number of nodes in the tree.
