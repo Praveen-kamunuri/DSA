@@ -17,7 +17,7 @@ class Solution:
         # Helper function to check if two subtrees are mirror images of each other
         def is_mirror(t1, t2):
 
-            # If both nodes are None, they are symmetric
+            # If both nodes are None, they are symmetric.
             if not t1 and not t2:
                 return True
 
