@@ -44,7 +44,7 @@ class Solution:
 # Time Complexity (TC):
 # - If the tree is a perfect binary tree, O(log N) height calculations are done in O(log N) time.
 # - If the tree is not perfect, recursive calls lead to O(log N) recursive levels.
-# - Each level performs O(1) work, leading to an overall worst-case time complexity of **O(log^2 N)**.
+# - Each level performs O(1) work, leading to an overall worst-case time complexity of **O(log^2 N)**
 
 # Space Complexity (SC):
 # - The recursion depth in the worst case is O(log N), so the space complexity is **O(log N)**.
