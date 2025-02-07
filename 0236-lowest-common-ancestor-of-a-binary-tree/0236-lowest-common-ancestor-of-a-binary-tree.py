@@ -23,7 +23,7 @@ class Solution:
         if not root or root == p or root == q:
             return root
 
-        # Recursively search for LCA in the left and right subtrees
+        # Recursively search for LCA in the left and right subtrees.
         left = self.lowestCommonAncestor(root.left, p, q)
         right = self.lowestCommonAncestor(root.right, p, q)
 
