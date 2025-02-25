@@ -14,7 +14,7 @@ class Solution:
 
 
         '''
-        # Special inorder traversal called Morris Inorder Traversal
+        # Special inorder traversal called Morris Inorder Traversal.
         # This method uses no extra space and modifies the tree temporarily.
 
         '''
@@ -42,7 +42,7 @@ class Solution:
                     result.append(curr.val)  # Visit the node
                     curr = curr.right  # Move to the right subtree
 
-        return result  # Return the inorder traversal result
+        return result  # Return the inorder traversal result okk.
 
 # Time Complexity: O(N) - Each node is visited at most twice.
 # Space Complexity: O(1) - No extra space is used, as Morris traversal modifies the tree temporarily.
