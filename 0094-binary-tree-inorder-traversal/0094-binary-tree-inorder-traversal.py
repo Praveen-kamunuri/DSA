@@ -1,5 +1,3 @@
-
-
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -11,38 +9,45 @@ from typing import Optional, List
 
 class Solution:
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        """
+        Morris Inorder Traversal:
+        - Special type of inorder traversal that uses **O(1) extra space**.
+        - It modifies tree temporarily (by linking predecessor), but restores it back.
+        - No recursion, no stack → space-efficient!
+        """
+        
+        inorder = []  # List to store inorder traversal
+        curr = root  # Start from root
 
-
-        '''
-        # Special inorder traversal called Morris Inorder Traversal.
-        # This method uses no extra space and modifies the tree temporarily.
-
-        '''
-        result = []  # Stores the inorder traversal result
-        curr = root  # Pointer to traverse the tree
-
-        while curr:
-            if curr.left is None:
-                # If there is no left child, visit the node and move to the right
-                result.append(curr.val)
-                curr = curr.right
+        while curr:  
+            if curr.left is None:  
+                # If no left child, visit the current node and move to right
+                inorder.append(curr.val)
+                curr = curr.right  
             else:
-                # Find the inorder predecessor (rightmost node in left subtree)
-                predecesor = curr.left
-                while predecesor.right and predecesor.right != curr:
-                    predecesor = predecesor.right
-
-                if predecesor.right is None:
-                    # Create a temporary link to the current node
-                    predecesor.right = curr
-                    curr = curr.left  # Move to the left subtree
+                # Finding inorder predecessor (rightmost node in left subtree)
+                predecessor = curr.left  
+                while predecessor.right and predecessor.right != curr:
+                    predecessor = predecessor.right
+                
+                if predecessor.right is None:
+                    # Establishing temporary link to current node
+                    predecessor.right = curr
+                    curr = curr.left  # Move left
                 else:
-                    # Revert the changes (restore the original tree)
-                    predecesor.right = None
-                    result.append(curr.val)  # Visit the node
-                    curr = curr.right  # Move to the right subtree
+                    # Breaking the temporary link (restoring tree)
+                    predecessor.right = None
+                    inorder.append(curr.val)  # Visit current node
+                    curr = curr.right  # Move right
+        
+        return inorder
 
-        return result  # Return the inorder traversal result okk.
+"""
+\U0001f6e0️ **Time Complexity (TC)** → O(N)
+   - Every node is visited at most **twice** (once during linking, once during restoration).
+   - Hence, overall complexity remains **O(N)**.
 
-# Time Complexity: O(N) - Each node is visited at most twice.
-# Space Complexity: O(1) - No extra space is used, as Morris traversal modifies the tree temporarily.
+\U0001f4cc **Auxiliary Space Complexity (ASC)** → O(1)
+   - No extra stack or recursion.
+   - Only modifies existing pointers temporarily, making it **constant space O(1)**.
+"""
