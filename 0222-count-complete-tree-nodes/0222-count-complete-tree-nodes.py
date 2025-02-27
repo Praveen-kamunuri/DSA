@@ -29,7 +29,7 @@ class Solution:
                 cnt += 1  # Increase height counter
             return cnt
 
-        # Compute left and right subtree heights
+        # Compute left and right subtree heights.
         left = getLeftHeight(root)
         right = getRightHeight(root)
 
