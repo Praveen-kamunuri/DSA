@@ -14,7 +14,7 @@ class Solution:
         if not root:
             return []
         
-        parent_map = {}  # Stores parent pointers for each node
+        parent_map = {}  # Stores parent pointers for each node.
         
         # DFS to map each node to its parent
         def dfs(node, parent=None):
