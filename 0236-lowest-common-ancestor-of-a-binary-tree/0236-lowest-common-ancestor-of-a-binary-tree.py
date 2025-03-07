@@ -1,4 +1,4 @@
-# Definition for a binary tree node
+# Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, x):
 #         self.val = x
@@ -13,7 +13,7 @@ class Solution:
         Args:
         root (TreeNode): The root of the binary tree.
         p (TreeNode): The first target node.
-        q (TreeNode): The second target node.
+        q (TreeNode): The second target node
 
         Returns:
         TreeNode: The lowest common ancestor of nodes p and q.
