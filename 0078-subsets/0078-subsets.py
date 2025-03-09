@@ -3,10 +3,10 @@ from typing import List
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
         
-        # Define a recursive function to generate subsets
+        # Define a recursive function to generate subsets.
         def solve(ind, ans, ds):
             # Base case: if the current index is equal to the length of the input array,
-            # append the current subset (deep copy of ds) to the answer list and return
+            # append the current subset (deep copy of ds) to the answer list and return.
             if ind == n:
                 ans.append(ds[:])
                 return
