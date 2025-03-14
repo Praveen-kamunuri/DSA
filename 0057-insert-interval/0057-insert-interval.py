@@ -10,7 +10,7 @@ class Solution:
         newInterval (List[int]): The new interval to insert.
 
         Returns:
-        List[List[int]]: The updated list of merged intervals.
+        List[List[int]]: The updated list of merged intervals
         """
         
         n = len(intervals)
