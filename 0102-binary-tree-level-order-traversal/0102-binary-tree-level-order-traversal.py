@@ -8,7 +8,7 @@ from collections import deque
 
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
-        # List to store the result of level-order traversal
+        # List to store the result of level-order traversal.
         ans = []
         
         # If the root is None (empty tree), return an empty list
@@ -17,7 +17,7 @@ class Solution:
 
         # Initialize a queue to perform level-order traversal
         q = deque()
-        q.append(root)  # Add the root node to the queue
+        q.append(root)  # Add the root node to the queue.
         
         # Loop until the queue is empty
         while q:
