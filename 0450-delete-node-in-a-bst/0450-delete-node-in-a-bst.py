@@ -87,7 +87,7 @@ class Solution:
 """
 Time Complexity (TC):
 - Searching for the node to delete: O(h) in a BST (h = height of the tree).
-- Finding the rightmost node of the left subtree: O(h).
+- Finding the rightmost node of the left subtree: O(h)
 - Modifying pointers: O(1).
 - Overall: O(h), where h is the height of the tree.
   - Best case (Balanced BST): O(log N)
