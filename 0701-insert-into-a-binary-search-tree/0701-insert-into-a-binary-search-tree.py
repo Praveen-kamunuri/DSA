@@ -20,7 +20,7 @@ class Solution:
                 root (TreeNode): The root of the BST.
                 val (int): The value to be inserted.
             Returns:
-                TreeNode: The parent node where the new value should be attached.
+                TreeNode: The parent node where the new value should be attached
             """
 
             curr = root
@@ -47,7 +47,7 @@ class Solution:
         # Create a new node with the given value
         new_node = TreeNode(val)
 
-        # Attach the new node to the correct position
+        # Attach the new node to the correct position.
         if val < insert_pos.val:
             insert_pos.left = new_node
         else:
