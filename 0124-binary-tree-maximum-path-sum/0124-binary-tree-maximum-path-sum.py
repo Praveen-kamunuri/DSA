@@ -28,7 +28,7 @@ class Solution:
             # If the right path sum is negative, we ignore it.
             right = max(0, find_max_sum_path(node.right, maxi))
 
-            # Update the overall maximum path sum if the current path (left + right + node's value)
+            # Update the overall maximum path sum if the current path (left + right + node's value).
             # is greater than the previously recorded maximum path sum.
             maxi[0] = max(maxi[0], left + right + node.val)
 
