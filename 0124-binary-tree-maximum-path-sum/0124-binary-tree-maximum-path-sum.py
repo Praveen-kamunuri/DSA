@@ -10,7 +10,7 @@ class Solution:
         """
         This function finds the maximum path sum in a binary tree.
         A path is defined as any sequence of nodes from some starting node to any node in the tree along the parent-child connections.
-        The path must contain at least one node and does not need to go through the root.
+        The path must contain at least one node and does not need to go through the root
         """
 
         # Helper function to calculate the maximum path sum starting from a given node.
