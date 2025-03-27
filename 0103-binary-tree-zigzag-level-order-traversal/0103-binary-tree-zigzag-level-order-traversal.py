@@ -8,7 +8,7 @@ from collections import deque
 
 class Solution:
     def zigzagLevelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
-        # Initialize a queue for level-order traversal
+        # Initialize a queue for level-order traversal.
         nodesQueue = deque()
 
         # Result list to store the final zigzag level order traversal
