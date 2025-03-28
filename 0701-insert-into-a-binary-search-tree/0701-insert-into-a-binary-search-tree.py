@@ -20,7 +20,7 @@ class Solution:
                 root (TreeNode): The root of the BST.
                 val (int): The value to be inserted.
             Returns:
-                TreeNode: The parent node where the new value should be attached
+                TreeNode: The parent node where the new value should be attached.
             """
 
             curr = root
