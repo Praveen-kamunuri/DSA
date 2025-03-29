@@ -14,7 +14,7 @@ class Solution:
         # Result list to store the final zigzag level order traversal
         result = []
 
-        # If the tree is empty, return an empty list
+        # If the tree is empty, return an empty list.
         if not root:
             return result
 
