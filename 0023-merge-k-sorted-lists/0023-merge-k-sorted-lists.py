@@ -6,7 +6,7 @@ class Solution:
         """
         Merges k sorted linked lists into one sorted linked list.
         """
-        # Min-heap to efficiently get the smallest element across all k lists
+        # Min-heap to efficiently get the smallest element across all k lists.
         min_heap = []
         
         # Step 1: Add the head of each linked list to the heap
@@ -37,7 +37,7 @@ class Solution:
         return dummy_node.next
 
 # Time Complexity:
-# - Each node is added and removed from the heap once.
+# - Each node is added and removed from the heap once
 # - Heap operations (push and pop) take O(log k), where k is the number of linked lists.
 # - Since there are a total of N nodes across all lists, the overall time complexity is:
 #   O(N log k)
