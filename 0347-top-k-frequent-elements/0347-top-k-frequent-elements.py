@@ -16,7 +16,7 @@ class Solution:
         for num, freq in hashmap.items():
             heapq.heappush(max_heap, (-freq, num))
         
-        # Step 3: Extract the top k elements from the heap
+        # Step 3: Extract the top k elements from the heap.
         result = []
         while max_heap and k > 0:
             freq, num = heapq.heappop(max_heap)  # Pop the element with the highest frequency
