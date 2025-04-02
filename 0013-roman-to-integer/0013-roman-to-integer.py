@@ -18,12 +18,12 @@ class Solution:
 
         # Iterate through the Roman numeral characters in reverse order
         for i in range(n - 1, -1, -1):
-            # Check if the current character's value is greater than or equal to the previous value
+            # Check if the current character's value is greater than or equal to the previous value.
             if hashmap[s[i]] >= pre_val:
                 res += hashmap[s[i]]
             else:
                 res -= hashmap[s[i]]
             pre_val = hashmap[s[i]]  # Update the previous value
 
-        # Return the final result as the integer equivalent of the input Roman numeral
+        # Return the final result as the integer equivalent of the input Roman numeral.
         return res
