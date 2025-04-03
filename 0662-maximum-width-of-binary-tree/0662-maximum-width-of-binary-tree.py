@@ -12,7 +12,7 @@ class Solution:
     def widthOfBinaryTree(self, root: Optional[TreeNode]) -> int:
         """
         Computes the maximum width of a binary tree. The width of a level is defined as 
-        the number of nodes between the leftmost and rightmost non-null nodes at that level.
+        the number of nodes between the leftmost and rightmost non-null nodes at that level
         """
         
         if not root:
@@ -24,7 +24,7 @@ class Solution:
         while q:
             size = len(q)  # Number of nodes at the current level
             
-            first_node, first_pos = q[0]  # Get position of leftmost node in the level
+            first_node, first_pos = q[0]  # Get position of leftmost node in the level.
             last_node, last_pos = q[-1]   # Get position of rightmost node in the level
             
             # Update max width
