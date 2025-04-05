@@ -23,7 +23,7 @@ class Solution:
         if root is None:
             return None
 
-        # Get the value of the current node
+        # Get the value of the current node..
         curr = root.val
 
         # If both p and q are greater than current node, LCA lies in the right subtree
