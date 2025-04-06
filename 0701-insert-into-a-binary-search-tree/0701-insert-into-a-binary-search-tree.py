@@ -15,7 +15,7 @@ class Solution:
 
         def find_place(root, val):
             """
-            Finds the correct position in the BST where the new node should be inserted
+            Finds the correct position in the BST where the new node should be inserted.
             Args:
                 root (TreeNode): The root of the BST.
                 val (int): The value to be inserted.
