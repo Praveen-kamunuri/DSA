@@ -10,7 +10,7 @@ class TreeNode:
 class Solution:
     def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
         """
-        Deletes a node with the given key from the BST and maintains BST properties.
+        Deletes a node with the given key from the BST and maintains BST properties
 
         Parameters:
         root (TreeNode): The root of the BST.
@@ -24,7 +24,7 @@ class Solution:
         if not root:
             return None
 
-        # If the root itself is the node to be deleted, handle deletion separately
+        # If the root itself is the node to be deleted, handle deletion separately..
         if root.val == key:
             return self.helper(root)
 
