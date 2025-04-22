@@ -8,7 +8,7 @@
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
         """
-        Finds the Lowest Common Ancestor (LCA) of two nodes in a Binary Search Tree (BST).
+        Finds the Lowest Common Ancestor (LCA) of two nodes in a Binary Search Tree (BST)...
         
         Parameters:
         root (TreeNode): The root of the BST.
