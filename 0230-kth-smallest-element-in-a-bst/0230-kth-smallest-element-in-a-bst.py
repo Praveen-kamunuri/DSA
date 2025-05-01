@@ -41,5 +41,5 @@ class Solution:
 
 # Space Complexity (SC):
 - The space complexity is **O(H)**, where H is the height of the tree (recursive stack).
-- Best case (balanced BST) -> O(log N), worst case (skewed tree) -> O(N).
+- Best case (balanced BST) -> O(log N), worst case (skewed tree) -> O(N).....
 """
