@@ -10,7 +10,7 @@ class Solution:
         # Get the starting color (target color to be replaced)
         target_color = image[sr][sc]
 
-        # If the starting pixel already has the new color, no changes are needed
+        # If the starting pixel already has the new color, no changes are needed...
         if target_color == color:
             return image
 
@@ -40,4 +40,4 @@ class Solution:
 # Time Complexity (TC): O(N), where N is the number of pixels in the image.
 # In the worst case, we might need to visit every pixel once.
 
-# Space Complexity (SC): O(N), for the queue used in BFS (in the worst case, nearly all pixels could be queued).
+# Space Complexity (SC): O(N), for the queue used in BFS (in the worst case, nearly all pixels could be queued)..
