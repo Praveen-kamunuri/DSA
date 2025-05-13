@@ -1,30 +1,35 @@
 from collections import deque
-from typing import List
-
 class Solution:
     def updateMatrix(self, mat: List[List[int]]) -> List[List[int]]:
-        rows, cols = len(mat), len(mat[0])
-        result = [[float('inf')] * cols for _ in range(rows)]
-        queue = deque()
 
-        # Add all 0s to the queue and set their distance as 0
+        rows = len(mat)
+        cols = len(mat[0])
+
+        res = [[float('inf')] * cols for i in range(rows)]
+
+        q = deque()
+
         for r in range(rows):
             for c in range(cols):
                 if mat[r][c] == 0:
-                    result[r][c] = 0
-                    queue.append((r, c))
+                    res[r][c] = 0
+                    q.append((r,c))
 
-        # Directions: up, down, left, right
-        directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+        directions = [(1,0), (0, -1), (-1,0), (0, 1)]
 
-        # BFS
-        while queue:
-            r, c = queue.popleft()
+        while q:
+            r, c = q.popleft()
+
             for dr, dc in directions:
-                new_r, new_c = r + dr, c + dc
-                if 0 <= new_r < rows and 0 <= new_c < cols:
-                    if result[new_r][new_c] > result[r][c] + 1:
-                        result[new_r][new_c] = result[r][c] + 1
-                        queue.append((new_r, new_c))
+                nr, nc = r + dr, c + dc
 
-        return result
+                if 0 <= nr < rows and 0 <= nc < cols:
+                    if res[nr][nc] > res[r][c] + 1:
+                        res[nr][nc] = res[r][c] + 1
+                        q.append((nr, nc))
+
+        return res
+
+
+
+        
