@@ -1,6 +1,6 @@
 class Solution:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
-        # Total number of cities
+        # Total number of cities.
         n = len(isConnected)
 
         # Count of connected components (provinces)
@@ -33,4 +33,4 @@ class Solution:
 
         # ✅ Space Complexity: O(n)
         # - visited[] list of size n
-        # - DFS recursion stack can go as deep as n in the worst case
+        # - DFS recursion stack can go as deep as n in the worst case...
