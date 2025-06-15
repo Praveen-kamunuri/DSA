@@ -4,7 +4,7 @@ class Solution:
         Do not return anything, modify board in-place instead.
         The function modifies the board in place, changing all 'O' regions
         that are surrounded by 'X' into 'X' and leaving 'O' regions connected to
-        the border unchanged.
+        the border unchanged..
         """
 
         rows = len(board)  # Get number of rows in the board..
