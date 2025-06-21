@@ -5,7 +5,7 @@ class Solution:
     def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
         """
         Returns the number of steps in the shortest transformation sequence from beginWord to endWord.
-        Each step must change exactly one letter, and the new word must be in the wordList..
+        Each step must change exactly one letter, and the new word must be in the wordList...
         """
 
         # If the endWord is not in the wordList, there's no valid path
@@ -40,7 +40,7 @@ class Solution:
                         wordSet.remove(next_word)  # remove ensures we don't visit again
                         q.append((next_word, steps + 1))
 
-        # If we exhaust the queue without finding endWord, return 0
+        # If we exhaust the queue without finding endWord, return 0..
         return 0
 
 
