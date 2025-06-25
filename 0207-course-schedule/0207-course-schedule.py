@@ -11,6 +11,7 @@ class Solution:
                         return True
                 elif path_sum[neighbour] == 1:
                     return True
+            path_sum[node] = 0
             return False
 
         adj = [[]for _ in range(numCourses)]
