@@ -3,11 +3,11 @@ from typing import List
 
 class Solution:
     def updateMatrix(self, mat: List[List[int]]) -> List[List[int]]:
-        # Get the size of the matrix
+        # Get the size of the matrix..
         rows = len(mat)
         cols = len(mat[0])
 
-        # Initialize the result matrix with infinity
+        # Initialize the result matrix with infinity.
         res = [[float('inf')] * cols for _ in range(rows)]
 
         # Queue for BFS
