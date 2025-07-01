@@ -35,7 +35,7 @@ class Solution:
                 if is_cycle(i, adj, visited, path_sum, numCourses, result) == False:
                     return []  # Cycle detected → not possible to finish all courses
 
-        return result[::-1]  # Reverse to get correct topological order
+        return result[::-1]  # Reverse to get correct topological order..
 
 # -------------------------------
 # Time Complexity (TC): O(V + E)
