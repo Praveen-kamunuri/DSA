@@ -3,7 +3,7 @@ class Solution:
         # Total number of cities.
         n = len(isConnected)
 
-        # Count of connected components (provinces)
+        # Count of connected components (provinces)..
         provinces = 0
 
         # Keeps track of visited cities
