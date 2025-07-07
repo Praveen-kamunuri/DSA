@@ -3,7 +3,7 @@ from typing import List
 
 class Solution:
     def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
-        # Get number of rows and columns in the image
+        # Get number of rows and columns in the image...
         rows = len(image)
         cols = len(image[0])
 
