@@ -1,27 +1,43 @@
 from collections import defaultdict, deque
+from typing import List
 
 class Solution:
     def findLadders(self, beginWord: str, endWord: str, wordList: List[str]) -> List[List[str]]:
-
         wordSet = set(wordList)
         if endWord not in wordSet:
             return []
 
-        # 1. BFS to build graph and find levels
-        layer = {}
-        layer[beginWord] = [[beginWord]]
+        parents = defaultdict(set)
+        level = {beginWord}
+        found = False
 
-        while layer:
-            new_layer = defaultdict(list)
-            for word in layer:
-                if word == endWord:
-                    return layer[word]
+        # BFS to build parent links
+        while level and not found:
+            next_level = set()
+            for word in level:
+                wordSet.discard(word)
+            for word in level:
                 for i in range(len(word)):
                     for c in 'abcdefghijklmnopqrstuvwxyz':
                         next_word = word[:i] + c + word[i+1:]
                         if next_word in wordSet:
-                            new_layer[next_word] += [path + [next_word] for path in layer[word]]
-            wordSet -= set(new_layer.keys())
-            layer = new_layer
+                            if next_word == endWord:
+                                found = True
+                            next_level.add(next_word)
+                            parents[next_word].add(word)
+            level = next_level
 
-        return []
+        res = []
+
+        # DFS to build all paths using parent map
+        def dfs(word, path):
+            if word == beginWord:
+                res.append([beginWord] + path[::-1])
+                return
+            for parent in parents[word]:
+                dfs(parent, path + [word])
+
+        if found:
+            dfs(endWord, [])
+
+        return res
