@@ -36,7 +36,7 @@ class Solution:
             # considering either the left or right subtree, plus the current node's value.
             return max(left, right) + node.val
 
-        # Initialize the maximum path sum as negative infinity to handle negative values in the tree.
+        # Initialize the maximum path sum as negative infinity to handle negative values in the tree..
         maxi = [float('-inf')]
 
         # Start the helper function from the root node.
@@ -46,7 +46,7 @@ class Solution:
         return maxi[0]
 
 # ---------------------------
-# Time Complexity (TC):
+# Time Complexity (TC):...
 # O(n), where n is the number of nodes in the binary tree.
 # This is because we traverse each node once to calculate the maximum path sum.
 
