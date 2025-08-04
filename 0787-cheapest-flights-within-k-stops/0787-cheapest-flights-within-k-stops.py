@@ -17,7 +17,7 @@ class Solution:
         q = deque()
         q.append((0, (src, 0)))  # 0 stops, at source, with 0 cost
 
-        # Step 4: Perform BFS with stop constraint
+        # Step 4: Perform BFS with stop constraint.
         while q:
             stops, node_with_cost = q.popleft()
             node = node_with_cost[0]
@@ -33,7 +33,7 @@ class Solution:
                     distance[neighbour] = cost + wt
                     q.append((stops + 1, (neighbour, cost + wt)))
 
-        # Step 5: If destination is unreachable, return -1
+        # Step 5: If destination is unreachable, return -1.
         if distance[dst] == sys.maxsize:
             return -1
         else:
