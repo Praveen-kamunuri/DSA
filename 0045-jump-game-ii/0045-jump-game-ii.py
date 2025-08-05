@@ -15,7 +15,7 @@ class Solution:
         farthest = 0
         current_end = 0
         
-        # Loop through the array until the second-to-last index
+        # Loop through the array until the second-to-last index.
         for i in range(n - 1):
             # Update the farthest index reachable from this position
             farthest = max(farthest, i + nums[i])
