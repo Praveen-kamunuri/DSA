@@ -76,7 +76,7 @@ class Solution:
 # - DSU operations (find/union) are nearly constant time: O(α(N)) ≈ O(1)
 # - Processing connections: O(E * α(N)) where E = number of connections
 # - Counting components: O(N * α(N))
-# - Total: O(N + E)
+# - Total: O(N + E)...
 
 # ✅ Space Complexity:
 # - O(N) for parent array
