@@ -5,7 +5,7 @@ class Solution:
         # Get the length of the input array
         n = len(nums)
         
-        # If the array has only one element, no jumps are needed
+        # If the array has only one element, no jumps are needed..
         if n == 1:
             return 0
         
@@ -33,4 +33,3 @@ class Solution:
         
         # Return the total number of jumps needed to reach the last index
         return jumps
-
