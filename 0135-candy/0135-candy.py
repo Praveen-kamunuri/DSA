@@ -46,4 +46,4 @@ class Solution:
 # Example Usage:
 # ratings = [1, 0, 2]
 # solution = Solution()
-# print(solution.candy(ratings))  # Output: 5
+# print(solution.candy(ratings))  # Output: 5...
