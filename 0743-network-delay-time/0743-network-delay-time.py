@@ -7,7 +7,7 @@ class Solution:
         # Create adjacency list for the graph (1-based indexing)
         adj = [[] for _ in range(n + 1)]
 
-        # Build the graph: u -> v with delay w
+        # Build the graph: u -> v with delay w...
         for u, v, delay in times:
             adj[u].append((v, delay))
 
