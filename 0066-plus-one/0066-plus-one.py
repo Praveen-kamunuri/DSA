@@ -21,7 +21,7 @@ class Solution:
             # If digit is 9, it becomes 0 and carry 1 to next digit
             digits[i] = 0
 
-        # If we finish the loop, it means all digits were 9 (e.g., [9,9,9] -> [1,0,0,0])
+        # If we finish the loop, it means all digits were 9 (e.g., [9,9,9] -> [1,0,0,0])..
         return [1] + [0] * n
 
 
