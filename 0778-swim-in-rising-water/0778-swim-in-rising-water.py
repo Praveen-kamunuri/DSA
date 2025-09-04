@@ -63,7 +63,7 @@ class Solution:
 # -------------------------------------------------------------
 # Time Complexity: O(n^2 * log(n^2))
 # - Each of the n^2 cells can be pushed to the heap at most once.
-# - Heap operations take log(n^2) time.
+# - Heap operations take log(n^2) time...
 
 # Space Complexity: O(n^2)
 # - Visited matrix: O(n^2)
