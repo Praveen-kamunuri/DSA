@@ -8,7 +8,7 @@
 # - Each cell is a node
 # - The cost of entering a node is its height (grid value)
 # - We're minimizing the "max height" encountered, not the sum of weights
-# - Use a min-heap (priority queue) to always expand the lowest available "height" cell
+# - Use a min-heap (priority queue) to always expand the lowest available "height" cell...
 
 import heapq
 class Solution:
