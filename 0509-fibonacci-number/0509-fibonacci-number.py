@@ -1,11 +1,21 @@
-class Solution(object):
-    def fib(self, n):
-        # Base cases: if n is 0 or 1, return n
-        if n <= 1:
-            return n
-        else:
-            # Recursive calls to calculate Fibonacci numbers
-            last = self.fib(n-1)
-            slast = self.fib(n-2)
-        # Return the sum of the last two Fibonacci numbers
-        return last + slast
+class Solution:
+    def fib(self, n: int) -> int:
+
+        dp = [-1] * (n + 1)
+
+        def fib_dp(num):
+            if num <= 1:
+                return num
+
+            if dp[num] != -1:
+                return dp[num]
+            
+            dp[num] = fib_dp(num - 1) + fib_dp(num - 2)
+
+            return dp[num]
+
+
+        return fib_dp(n)
+
+
+        
