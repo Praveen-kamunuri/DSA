@@ -1,21 +1,13 @@
 class Solution:
     def fib(self, n: int) -> int:
+        if n == 0:
+            return n
 
         dp = [-1] * (n + 1)
 
-        def fib_dp(num):
-            if num <= 1:
-                return num
+        dp[0] = 0
+        dp[1] = 1
 
-            if dp[num] != -1:
-                return dp[num]
-            
-            dp[num] = fib_dp(num - 1) + fib_dp(num - 2)
-
-            return dp[num]
-
-
-        return fib_dp(n)
-
-
-        
+        for i in range(2, n + 1):
+            dp[i] = dp[i - 1] + dp[i - 2]
+        return dp[n]
