@@ -1,20 +1,12 @@
 class Solution:
     def climbStairs(self, n: int) -> int:
 
-        def backtrack(summ, ds, res, n):
-            if summ > n:
-                return 
-            
-            elif summ == n:
-                res.append(ds[:])
-                return
-            
-            else:
-                backtrack(summ + 2, ds, res, n)
-                backtrack(summ + 1, ds, res, n)
-            
-            
-        res = []
-        ds = []
-        backtrack(0, ds, res, n)
-        return len(res)
+        dp = [-1] * (n + 1)
+
+        dp[0] = 1
+        dp[1] = 1
+
+        for i in range(2, n + 1):
+            dp[i] = dp[i - 1] + dp[i - 2]
+        
+        return dp[n]
