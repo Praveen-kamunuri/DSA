@@ -33,4 +33,4 @@ class MedianFinder:
 # - `findMedian`: O(1) as it only accesses the tops of heaps.
 
 # Space Complexity (SC):
-# - O(n) for storing elements in two heaps (`self.small` and `self.large`).
+# - O(n) for storing elements in two heaps (`self.small` and `self.large`)..
