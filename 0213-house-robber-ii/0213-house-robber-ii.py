@@ -6,23 +6,27 @@ class Solution:
         if n == 1:
             return nums[0]
 
-        def solve_tabulation(arr):
+        def solve_spc_opt(arr):
             m = len(arr)
-
-            dp = [-1] * m
-            dp[0] = arr[0]
+            
+            prev = arr[0]
+            prev2 = 0
 
             for i in range(1, m):
-                take = arr[i] 
+                take = arr[i]
+
                 if i > 1:
-                    take += dp[i - 2]
-                not_take = 0 + dp[i - 1]
+                    take += prev2
+                not_take = 0 + prev
 
-                dp[i] = max(take, not_take)
-            return dp[-1]
+                curr = max(take, not_take)
 
-        first_take = solve_tabulation(nums[:-1])
-        last_take = solve_tabulation(nums[1:])
+                prev2 = prev
+                prev = curr
+            return prev
+        
+        first_take = solve_spc_opt(nums[:-1])
+        last_take = solve_spc_opt(nums[1:])
 
         return max(first_take, last_take)
         
