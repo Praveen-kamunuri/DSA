@@ -6,25 +6,23 @@ class Solution:
         if n == 1:
             return nums[0]
 
-        def solve_dp(start, end, dp):
-            if start > end:
-                return 0
+        def solve_tabulation(arr):
+            m = len(arr)
 
-            if dp[start] != -1:
-                return dp[start]
+            dp = [-1] * m
+            dp[0] = arr[0]
 
-            pick = nums[start] + solve_dp(start + 2, end, dp)
-            not_pick = 0 + solve_dp(start + 1, end, dp)
+            for i in range(1, m):
+                take = arr[i] 
+                if i > 1:
+                    take += dp[i - 2]
+                not_take = 0 + dp[i - 1]
 
-            dp[start] = max(pick, not_pick)
-            return dp[start]
+                dp[i] = max(take, not_take)
+            return dp[-1]
 
+        first_take = solve_tabulation(nums[:-1])
+        last_take = solve_tabulation(nums[1:])
 
-        dp1 = [-1] * n
-        first_pick = solve_dp(0, n - 2, dp1)
-
-        dp2 = [-1] * n
-        first_skip = solve_dp(1, n - 1, dp2)
-
-        return max(first_pick, first_skip)
+        return max(first_take, last_take)
         
