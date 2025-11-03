@@ -12,9 +12,9 @@ class Solution:
             }
 
         # Initialize variables
-        res = 0  # The result will be stored here
+        res = 0  # The result will be stored here..
         pre_val = 0  # Keep track of the previous Roman numeral value
-        n = len(s)  # Get the length of the input string
+        n = len(s)  # Get the length of the input string.
 
         # Iterate through the Roman numeral characters in reverse order
         for i in range(n - 1, -1, -1):
