@@ -3,21 +3,16 @@ class Solution:
 
         n = len(nums)
 
-        dp = [-1] * n
+        dp = [0] * n
+        dp[0] = nums[0]
 
-        def solve_dp(ind, dp, n):
-            if ind >= n:
-                return 0
-            
-            if dp[ind] != -1:
-                return dp[ind]
-
-            take = nums[ind] + solve_dp(ind + 2, dp, n)
-            not_take = 0 + solve_dp(ind + 1, dp, n)
+        for ind in range(1, n):
+            take = nums[ind]
+            if ind > 1:
+                take += dp[ind - 2]
+            not_take = 0 + dp[ind - 1]
 
             dp[ind] = max(take, not_take)
-            return dp[ind]
+        return dp[n - 1]
 
-        solve_dp(0, dp, n)
-        return dp[0]
         
