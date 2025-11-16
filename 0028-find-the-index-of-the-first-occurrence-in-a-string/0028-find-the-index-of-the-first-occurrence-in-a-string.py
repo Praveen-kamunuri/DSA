@@ -2,7 +2,7 @@ class Solution:
     def strStr(self, haystack: str, needle: str) -> int:
         # Length of main string (haystack)
         x = len(haystack)
-        # Length of substring (needle)
+        # Length of substring (needle)..
         y = len(needle)
 
         # Loop through all possible starting positions
@@ -18,4 +18,7 @@ class Solution:
         return -1
 
 
-# Time Complexity (TC): O(
+# Time Complexity (TC): O((x - y + 1) * y) ≈ O(x * y) in worst case
+#   - For each possible index (x - y + 1), we may compare up to y characters
+# Space Complexity (SC): O(1)
+#   - We only use a few variables (x, y, i), no extra space that grows with input
