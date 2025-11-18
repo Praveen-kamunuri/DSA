@@ -29,7 +29,7 @@ class Solution:
             newInterval[1] = max(newInterval[1], intervals[i][1])
             i += 1
         
-        # Add the merged interval
+        # Add the merged interval.
         result.append(newInterval)
         
         # Step 3: Add all remaining intervals that start after the new interval ends
