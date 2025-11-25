@@ -33,7 +33,7 @@ class Solution:
             if node:
                 heapq.heappush(min_heap, (node.val, ind, node))
         
-        # Step 4: Return the merged list starting from the node after the dummy
+        # Step 4: Return the merged list starting from the node after the dummy.
         return dummy_node.next
 
 # Time Complexity:
