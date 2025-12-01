@@ -54,27 +54,4 @@ class Solution:
 # Space Complexity (SC):
 # 1. Hashmap storage: O(k), where k is the number of unique cards.
 # 2. Heap storage: O(k).
-# Final SC: O(k).
-
-# Example usage and outputs for validation:
-solution = Solution()
-
-# Test Case 1: Example from the prompt
-hand = [1, 2, 3, 6, 2, 3, 4, 7, 8]
-groupSize = 3
-print(solution.isNStraightHand(hand, groupSize))  # Output: True
-
-# Test Case 2: Cannot form groups
-hand = [1, 2, 3, 4, 5]
-groupSize = 4
-print(solution.isNStraightHand(hand, groupSize))  # Output: False
-
-# Test Case 3: Handles duplicates properly
-hand = [1, 1, 2, 2, 3, 3]
-groupSize = 3
-print(solution.isNStraightHand(hand, groupSize))  # Output: True
-
-# Test Case 4: Missing cards to form a group
-hand = [8, 10, 12]
-groupSize = 3
-print(solution.isNStraightHand(hand, groupSize))  # Output: False
+# Final SC: O(k)., groupSize))  # Output: False...
