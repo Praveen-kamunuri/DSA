@@ -43,4 +43,4 @@ class Solution:
         return is_valid_bst(root, -sys.maxsize - 1, sys.maxsize)
 
 # TC: O(n) - We traverse each node exactly once.
-# SC: O(n) in the worst-case (unbalanced tree) due to recursion stack, O(log n) for balanced trees.
+# SC: O(n) in the worst-case (unbalanced tree) due to recursion stack, O(log n) for balanced trees...
