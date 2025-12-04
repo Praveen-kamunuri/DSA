@@ -38,4 +38,4 @@ class Solution:
         return stack2[::-1]
 
         # Time Complexity: O(n), where n is the number of nodes in the tree
-        # Space Complexity: O(n), due to the usage of two stacks that can each hold up to n nodes in the worst case
+        # Space Complexity: O(n), due to the usage of two stacks that can each hold up to n nodes in the worst case.
