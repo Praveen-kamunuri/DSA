@@ -1,27 +1,30 @@
 class Solution:
     def lengthOfLastWord(self, s: str) -> int:
-        
-        n = len(s)  # Get the length of the string
-        
-        word_len = 0  # Variable to keep track of the length of the last word
-        
-        i = n - 1  # Start from the last character in the string
-        
-        # Iterate backwards through the string
-        while i >= 0:
-            
-            # If the current character is a space
+        """
+        Returns the length of the last word in the input string.
+
+        Time Complexity: O(n), where n is the length of the string `s`
+        Space Complexity: O(1), no extra space used apart from variables
+        """
+
+        # Remove leading and trailing spaces
+        s = s.strip()
+        n = len(s)
+
+        last_space_ind = -1  # Use -1 to represent "no space found"
+
+        # Loop through the string to find the last space index
+        for i in range(n):
             if s[i] == ' ':
-                # If we haven't started counting a word yet, just move to the next character
-                if word_len == 0:
-                    i -= 1
-                # If we have started counting a word, return the length of that word
-                else:
-                    return word_len
-            else:
-                # If the current character is not a space, increment the word length
-                word_len += 1
-                i -= 1
-                
-        # If the loop ends, return the word length (for cases where the entire string is one word)
-        return word_len
+                last_space_ind = i
+
+        # If there was at least one space
+        if last_space_ind != -1:
+            cnt = 0
+            # Count the characters after the last space
+            for i in range(last_space_ind + 1, n):
+                cnt += 1
+            return cnt
+        else:
+            # If there's no space, the entire string is a single word
+            return n
