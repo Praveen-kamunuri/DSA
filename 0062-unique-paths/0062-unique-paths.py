@@ -1,43 +1,24 @@
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
-        # Initialize a 2D DP array with -1 (m rows × n columns)
-        dp = [[-1 for col in range(n)] for row in range(m)]
-        print(dp)  # Just to visualize the DP grid (optional)
 
-        # Recursive helper function
-        def solve(row, col, m, n, dp):
-            # Base condition: if out of grid bounds
-            if row >= m or col >= n:
-                return 0
-            
-            # If destination (bottom-right corner) reached
-            if row == (m - 1) and col == (n - 1):
+        dp = [[-1 for _ in range(n)]for _ in range(m)]
+        def cal_paths(row, col, m, n):
+            if row == 0 and col == 0:
                 return 1
-            
-            # If already computed, return cached result (memoization)
+
+
+            if row < 0 or col < 0:
+                return 0
+
             if dp[row][col] != -1:
                 return dp[row][col]
 
-            # Move right
-            go_right = solve(row, col + 1, m, n, dp)
-            # Move down
-            go_down = solve(row + 1, col, m, n, dp)
+            go_up = cal_paths(row - 1, col, m, n)
+            go_left = cal_paths(row, col - 1, m, n)
 
-            # Store result in DP table
-            dp[row][col] = go_right + go_down
+            dp[row][col] = go_up + go_left
 
-            # Return total unique paths from (row, col)
             return dp[row][col]
-
-        # Start recursion from the top-left corner (0, 0)
-        return solve(0, 0, m, n, dp)
-
-
-# -----------------------------
-# ✅ Time Complexity:
-# O(m * n)
-# Each cell (row, col) is computed once due to memoization.
-
-# ✅ Space Complexity:
-# O(m * n) for the DP table + O(m + n) recursion stack depth.
-# -----------------------------
+    
+        return cal_paths(m - 1, n -1, m, n)
+        
