@@ -1,23 +1,32 @@
+import sys
 class Solution:
     def minimumTotal(self, triangle: List[List[int]]) -> int:
 
-        m = len(triangle)
+        rows = len(triangle)
 
-        dp = [[-1 for _ in range(m)]for _ in range(m)]
+        prev = [0] * len(triangle[-1])
 
-        def solve_triangle(row, col, m, dp):
+        prev[0] = triangle[0][0]
 
-            if row == m - 1:
-                return triangle[row][col]
-            
-            if dp[row][col] != -1:
-                return dp[row][col]
+        for i in range(1, rows):
+            cols = i + 1
+            temp = [0] * cols
+            for j in range(cols):
+                if j == 0:
+                    temp[j] += triangle[i][j] + prev[j]
+                elif j == i:
+                    temp[j] += triangle[i][j] + prev[j - 1]
+                else:
+                    temp[j] += triangle[i][j] +  min(prev[j], prev[j - 1])
+            prev = temp
 
-            go_down = triangle[row][col] + solve_triangle(row + 1, col, m, dp)
-            go_diagonal = triangle[row][col] + solve_triangle(row + 1, col + 1, m, dp)
+        res = sys.maxsize
+        for k in range(len(prev)):
+            if prev[k] < res:
+                res = prev[k]
+        return res
 
-            dp[row][col] = min(go_down, go_diagonal)
 
-            return dp[row][col]
 
-        return solve_triangle(0, 0, m, dp)
+
+        
