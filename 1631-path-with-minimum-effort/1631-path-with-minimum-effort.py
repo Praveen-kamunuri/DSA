@@ -64,5 +64,5 @@ class Solution:
 
 ✅ Why this works:
 - The effort is defined as the **maximum absolute height difference** between adjacent cells along a path.
-- Dijkstra's algorithm, modified to use max instead of sum, guarantees the minimum such value.
+- Dijkstra's algorithm, modified to use max instead of sum, guarantees the minimum such value...
 """
