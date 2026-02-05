@@ -24,7 +24,7 @@ class MedianFinder:
         # If odd total elements, return the top of the max-heap (small)
         if len(self.small) > len(self.large):
             return -self.small[0]
-        # If even total elements, return the average of the tops of both heaps
+        # If even total elements, return the average of the tops of both heaps...
         return (-self.small[0] + self.large[0]) / 2.0
 
 
