@@ -6,7 +6,7 @@ class Solution:
         We start from the least significant digit (end of the list). 
         - If it's less than 9, we can safely add 1 and return.
         - If it's 9, we set it to 0 and continue carrying the 1 to the next digit.
-        - If we carry all the way through (e.g., [9,9,9]), we insert a 1 at the beginning.
+        - If we carry all the way through (e.g., [9,9,9]), we insert a 1 at the beginning..
         """
 
         n = len(digits)
