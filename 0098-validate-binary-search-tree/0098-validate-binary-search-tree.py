@@ -14,7 +14,7 @@ class Solution:
         A valid BST is defined as:
           - The left subtree of a node contains only nodes with keys less than the node's key.
           - The right subtree of a node contains only nodes with keys greater than the node's key.
-          - Both the left and right subtrees must also be binary search trees.
+          - Both the left and right subtrees must also be binary search trees...
         """
 
         def is_valid_bst(node, min_val, max_val):
