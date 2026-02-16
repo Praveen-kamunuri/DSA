@@ -13,7 +13,9 @@ class Solution:
         
         target = total_sum // 2
 
-        def find_equal_subset_sum(ind, target):
+        dp = [[-1] * (target + 1) for _ in range(n)]
+
+        def find_equal_subset_sum(ind, target, dp):
 
             if target == 0:
                 return True
@@ -21,14 +23,19 @@ class Solution:
             if ind == 0:
                 return False
 
+            if dp[ind][target] != -1:
+                return dp[ind][target]
+
             take = False
 
             if nums[ind] <= target:
-                take = find_equal_subset_sum(ind - 1, target - nums[ind])
+                take = find_equal_subset_sum(ind - 1, target - nums[ind], dp)
             
-            not_take = find_equal_subset_sum(ind - 1, target)
+            not_take = find_equal_subset_sum(ind - 1, target, dp)
 
-            return take or not_take
+            dp[ind][target] = take or not_take
 
-        return find_equal_subset_sum(n - 1, target)
+            return dp[ind][target]
+
+        return find_equal_subset_sum(n - 1, target, dp)
 
