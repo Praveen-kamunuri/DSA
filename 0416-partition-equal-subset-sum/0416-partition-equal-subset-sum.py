@@ -11,31 +11,25 @@ class Solution:
         if total_sum % 2 != 0:
             return False
         
-        target = total_sum // 2
+        target_sum = total_sum // 2
 
-        dp = [[-1] * (target + 1) for _ in range(n)]
+        dp = [[False] * (target_sum + 1) for _ in range(n)]
 
-        def find_equal_subset_sum(ind, target, dp):
+        for i in range(n):
+            dp[i][0] = True
+        
+        if nums[0] <= target_sum:
+            dp[0][nums[0]] = True
+        
+        for ind in range(1, n):
+            for target in range(1, target_sum + 1):
+                take = False
+                if nums[ind] <= target:
+                    take = dp[ind - 1][target - nums[ind]]
+                not_take = dp[ind - 1][target]
 
-            if target == 0:
-                return True
+                dp[ind][target] = take or not_take
+        
+        return dp[n - 1][target_sum]
 
-            if ind == 0:
-                return False
-
-            if dp[ind][target] != -1:
-                return dp[ind][target]
-
-            take = False
-
-            if nums[ind] <= target:
-                take = find_equal_subset_sum(ind - 1, target - nums[ind], dp)
-            
-            not_take = find_equal_subset_sum(ind - 1, target, dp)
-
-            dp[ind][target] = take or not_take
-
-            return dp[ind][target]
-
-        return find_equal_subset_sum(n - 1, target, dp)
-
+        
