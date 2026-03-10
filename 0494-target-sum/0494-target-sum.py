@@ -1,26 +1,7 @@
 class Solution:
     def findTargetSumWays(self, nums: List[int], target: int) -> int:
 
-        def count_partitions(ind, target, dp, arr):
-
-            if ind == 0:
-                if target == 0 and arr[0] == 0:
-                    return 2
-                if target == 0 or arr[0] == target:
-                    return 1
-                return 0
-
-            if dp[ind][target] != -1:
-                return dp[ind][target]
-
-            take = 0
-            if arr[ind] <= target:
-                take = count_partitions(ind - 1, target - arr[ind], dp, arr)
-            not_take = count_partitions(ind - 1, target, dp, arr)
-
-            dp[ind][target] = take + not_take
-            return dp[ind][target]
-
+       
                 
         n = len(nums)
 
@@ -37,9 +18,25 @@ class Solution:
 
         s2  = (total_sum - target) // 2
 
-        dp = [[-1] * (s2 + 1)for _ in range(n)]
+        dp = [[0] * (s2 + 1)for _ in range(n)]
 
-        res = count_partitions(n - 1, s2, dp, nums)
+        if nums[0] == 0:
+            dp[0][0] = 2
+        else:
+            dp[0][0] = 1
 
-        return res
+        if nums[0] != 0 and nums[0] <= s2:
+            dp[0][nums[0]] = 1
+
+        for ind in range(1, n):
+            for target in range(s2 + 1):
+                take = 0
+                if nums[ind] <= target:
+                    take = dp[ind - 1][target - nums[ind]]
+                not_take = dp[ind - 1][target]
+
+                dp[ind][target] = take + not_take
+
+        return dp[n - 1][s2]
+
         
