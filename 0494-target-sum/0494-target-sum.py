@@ -1,40 +1,45 @@
 class Solution:
     def findTargetSumWays(self, nums: List[int], target: int) -> int:
 
-
-        def count_ways(ind, target, dp):
+        def count_partitions(ind, target, dp, arr):
 
             if ind == 0:
-                if target == 0 and nums[ind] == 0:
+                if target == 0 and arr[0] == 0:
                     return 2
-                if target == nums[0] or target == -(nums[0]):
+                if target == 0 or arr[0] == target:
                     return 1
                 return 0
-            
+
             if dp[ind][target] != -1:
                 return dp[ind][target]
-        
-            take_pos = count_ways(ind - 1, target - (nums[ind]), dp)
-            take_neg = count_ways(ind - 1, target + (nums[ind]), dp)
 
-            dp[ind][target] = take_pos + take_neg
+            take = 0
+            if arr[ind] <= target:
+                take = count_partitions(ind - 1, target - arr[ind], dp, arr)
+            not_take = count_partitions(ind - 1, target, dp, arr)
 
+            dp[ind][target] = take + not_take
             return dp[ind][target]
 
+                
         n = len(nums)
 
-        if n == 1:
+        total_sum = 0
 
-            if nums[0] == 0:
-                return 2
+        for i in range(n):
+            total_sum += nums[i]
 
-            if nums[0] == target or nums[0] == -(target):
-                return 1
-           
-            else:
-                return 0
-        
-        dp = [[-1] * (target + 1)]
-        res = count_ways(n - 1, target, dp)
+        if total_sum - target < 0:
+            return 0
+
+        if (total_sum - target) % 2 != 0:
+            return 0
+
+        s2  = (total_sum - target) // 2
+
+        dp = [[-1] * (s2 + 1)for _ in range(n)]
+
+        res = count_partitions(n - 1, s2, dp, nums)
+
         return res
         
