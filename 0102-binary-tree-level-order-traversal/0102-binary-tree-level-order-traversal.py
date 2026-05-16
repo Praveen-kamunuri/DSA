@@ -22,7 +22,7 @@ class Solution:
         # Loop until the queue is empty
         while q:
             size = len(q)  # Get the number of nodes at the current level
-            level = []  # List to store nodes' values at the current level
+            level = []  # List to store nodes' values at the current level.
             
             # Process all nodes at the current level
             for i in range(size):
