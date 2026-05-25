@@ -4,7 +4,7 @@ class Solution:
         n = len(s)
         m = len(p)
 
-        dp = [[-1 for _ in range(m + 1)]for _ in range(n + 1)]
+        dp = [[-1 for _ in range(m)]for _ in range(n)]
 
         def isAllStars(n, s):
             for i in range(n + 1):
