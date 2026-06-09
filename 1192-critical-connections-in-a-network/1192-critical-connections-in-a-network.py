@@ -1,55 +1,50 @@
 class Solution:
     def __init__(self):
-        # Timer is used to assign discovery time for each node
+        # Timer to keep track of discovery time during DFS
         self.timer = 1
 
-    def dfs(self, node, parent, visited, adj, tin, low, bridges):
+    def dfs(self, node, parent, adj, tin, low, vis, bridges):
         # Mark the current node as visited
-        visited[node] = 1
+        vis[node] = 1
 
-        # Initialize tin (discovery time) and low (lowest reachable time)
-        tin[node] = self.timer
-        low[node] = self.timer
+        # Set the discovery time and low-link value for this node
+        tin[node] = low[node] = self.timer
         self.timer += 1  # Increment timer for next node
 
-        # Explore all neighbors of the current node
-        for neighbour in adj[node]:
-            if neighbour == parent:
+        # Explore all adjacent nodes
+        for adj_node in adj[node]:
+            if adj_node == parent:
                 # Skip the parent node to avoid going back
                 continue
+            
+            if vis[adj_node] == 0:
+                # If the adjacent node is not visited, do DFS
+                self.dfs(adj_node, node, adj, tin, low, vis, bridges)
 
-            if visited[neighbour] == 0:
-                # DFS on unvisited neighbor
-                self.dfs(neighbour, node, visited, adj, tin, low, bridges)
+                # After DFS call, update the low-link value for the current node
+                low[node] = min(low[node], low[adj_node])
 
-                # After DFS, update the low-link value of the current node
-                low[node] = min(low[node], low[neighbour])
-
-                # Check if the edge (node, neighbour) is a bridge
-                # If the lowest reachable vertex from neighbour is greater than discovery time of node,
-                # then this edge is critical
-                if low[neighbour] > tin[node]:
-                    bridges.append((neighbour, node))
+                # Check if the edge (node, adj_node) is a bridge
+                # Condition: If the lowest reachable time from adj_node is greater than discovery time of node
+                if low[adj_node] > tin[node]:
+                    bridges.append([node, adj_node])
+            
             else:
-                # If neighbor is already visited and is not the parent,
-                # it's a back edge, so update low[node]
-                low[node] = min(low[node], low[neighbour])
+                # If the adjacent node is already visited and is not the parent
+                # Then it's a back edge, update the low value of the current node
+                low[node] = min(low[node], low[adj_node])
 
     def criticalConnections(self, n: int, connections: List[List[int]]) -> List[List[int]]:
         """
         Intuition:
         ----------
-        A critical connection (bridge) is an edge that, if removed, disconnects the graph.
-        We use Tarjan's Algorithm with DFS to find all bridges in the graph.
-        The key idea:
-        - Maintain discovery time (tin) and low-link values (low).
-        - If for an edge (u, v), low[v] > tin[u], then (u, v) is a bridge.
-
-        Approach:
-        ---------
-        1. Build adjacency list from the given edge list.
-        2. Use DFS to visit nodes and compute tin and low values.
-        3. Whenever low[neighbour] > tin[node], the edge is a bridge.
+        A critical connection (bridge) is an edge that, if removed, makes the graph disconnected.
+        To find all such bridges, we use Tarjan's Algorithm:
+        - Maintain two arrays:
+          tin[node]: Discovery time of the node
+          low[node]: Lowest discovery time reachable from that node
+        - During DFS:
+          If low[adj_node] > tin[node], then edge (node, adj_node) is a bridge.
         """
 
         # Step 1: Build adjacency list
@@ -59,13 +54,14 @@ class Solution:
             adj[v].append(u)
 
         # Step 2: Initialize helper arrays
-        visited = [0] * n    # Track visited nodes
-        tin = [0] * n        # Discovery time for each node
-        low = [0] * n        # Lowest reachable time for each node
-        bridges = []         # Store bridges
+        visited = [0] * n    # To mark visited nodes
+        tin = [0] * n        # Discovery times
+        low = [0] * n        # Lowest reachable discovery time
+        bridges = []         # To store all bridges
 
-        # Step 3: Call DFS from node 0 (or all nodes for disconnected graphs)
-        self.dfs(0, -1, visited, adj, tin, low, bridges)
+        # Step 3: Call DFS starting from node 0
+        # (In case of disconnected graph, run DFS for all unvisited nodes)
+        self.dfs(0, -1, adj, tin, low, visited, bridges)
 
         return bridges
 
@@ -73,14 +69,14 @@ class Solution:
 # ------------------------------
 # Time Complexity:
 # ------------------------------
-# Building adjacency list: O(n + E), where E = number of edges
-# DFS traversal: O(n + E) because we visit each node and edge once
+# - Building adjacency list: O(n + E), where E = number of edges
+# - DFS traversal: O(n + E) (each node and edge visited once)
 # Overall: O(n + E)
 #
 # ------------------------------
 # Space Complexity:
 # ------------------------------
-# Adjacency list: O(n + E)
-# Arrays tin, low, visited: O(n)
-# Recursion stack: O(n)
-# Overall: O(n + E)
+# - Adjacency list: O(n + E)
+# - Arrays tin, low, visited: O(n)
+# - Recursion stack: O(n)
+# Overall: O(n + E)...
