@@ -5,26 +5,19 @@ class Solution:
 
         n = len(sorted_nums)
 
-        dp = [[None for _ in range(n + 1)]for _ in range(n)]
+        dp = [[[] for _ in range(n + 1)]for _ in range(n + 1)]
 
-        def calLDS(ind, prev_ind, dp):
 
-            if ind == n:
-                return []
-            
-            if dp[ind][prev_ind + 1] != None:
-                return dp[ind][prev_ind + 1]
+        for ind in range(n - 1, -1 , -1):
+            for prev_ind in range(ind - 1, -2, -1):
 
-            not_pick = calLDS(ind + 1, prev_ind, dp)
+                not_pick = dp[ind + 1][prev_ind + 1]
 
-            pick = []
+                pick = []
 
-            if prev_ind == -1 or sorted_nums[ind] % sorted_nums[prev_ind] == 0:
+                if prev_ind == -1 or sorted_nums[ind] % sorted_nums[prev_ind] == 0:
+                    pick = [sorted_nums[ind]] + dp[ind + 1][ind + 1]
                 
-                pick = [sorted_nums[ind]] + calLDS(ind + 1, ind, dp)
-            
-            dp[ind][prev_ind + 1] = max(pick, not_pick, key = len)
+                dp[ind][prev_ind + 1] = max(pick, not_pick, key = len)
 
-            return dp[ind][prev_ind + 1]
-      
-        return calLDS(0, -1, dp)
+        return dp[0][0]
